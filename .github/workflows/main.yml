@@ -13,7 +13,7 @@ jobs:
 
     - name: Configure AWS credentials
       run:
-        creds=($(aws sts assume-role --region ${AWS_REGION} --role-arn ${{ secrets.AWS_ASSUME_ROLE_ARN }} --role-session-name "GitHubActionsSession-132904414" --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text))
+        creds=($(aws sts assume-role --region "us-east-1" --role-arn ${{ secrets.AWS_ASSUME_ROLE_ARN }} --role-session-name "GitHubActionsSession-132904414" --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text))
         export AWS_ACCESS_KEY_ID=${creds[0]}
         export AWS_SECRET_ACCESS_KEY=${creds[1]}
         export AWS_SESSION_TOKEN=${creds[2]} 
